@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-08-2025 a las 06:01:49
+-- Tiempo de generación: 12-08-2025 a las 03:19:30
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -42,21 +42,15 @@ CREATE TABLE `apartamentos` (
 --
 
 INSERT INTO `apartamentos` (`id`, `apartamento`, `direccion`, `ocupado`, `descripcion`) VALUES
-(1, 101, 'Av. Central 123', 'SI', 'Apartamento con balcón y vista al parque'),
-(2, 102, 'Calle Sur 456', 'NO', 'Apartamento sin amueblar, ideal para estudiantes'),
-(3, 103, 'Paseo del Lago 789', 'SI', 'Apartamento de lujo con dos recámaras'),
-(4, 104, 'Av. Reforma 321', 'SI', 'Estudio compacto con cocina integrada'),
-(5, 105, 'Calle Norte 654', 'NO', 'Apartamento con patio y cochera'),
-(6, 106, 'Blvd. Sol 987', 'NO', 'Apartamento familiar con 3 habitaciones'),
-(7, 107, 'Calle Jardín 111', 'SI', 'Loft moderno cerca del metro'),
-(8, 108, 'Av. Palma 222', 'SI', 'Departamento con jardín privado'),
-(9, 109, 'Av. Roble 333', 'NO', 'Apartamento remodelado recientemente'),
-(10, 110, 'Calle Río 444', 'SI', 'Penthouse con terraza y jacuzzi'),
+(5, 105, 'Calle Norte 654', 'SI', 'Apartamento con patio y cochera'),
+(7, 107, 'Calle Jardín 111', 'NO', 'Loft moderno cerca del metro'),
 (11, 213, 'AVENIDA DEL SUR', 'NO', 'AMPLIO'),
 (12, 512, 'CALLE DEL AMANANECER 512', 'SI', 'PEQUEÑO'),
-(13, 932, 'CALLE AZUL 932', 'SI', 'GRANDE'),
-(14, 333, 'ST. MYKE TOWERS', 'NO', 'GRANDE Y LUJOSO'),
-(21, 120, 'BLVD DURANGO 120', 'NO', '2 PISOS');
+(13, 932, 'CALLE AZUL 932', 'NO', 'GRANDE'),
+(14, 333, 'ST. MYKE TOWERS', 'SI', 'GRANDE Y LUJOSO'),
+(21, 120, 'BLVD DURANGO 120', 'SI', '2 PISOS'),
+(25, 212, 'CALLE OCAMPO 212', 'NO', 'MEDIANO 2 HABITACIONES Y UN BAÑO'),
+(26, 89, 'AVENIDA DEL LAGO', 'NO', 'APARTAMENTO PEQUEÑO CON 1 CUARTO');
 
 -- --------------------------------------------------------
 
@@ -79,14 +73,30 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`ID`, `NOMBRE`, `TELEFONO`, `APARTAMENTO`, `MONTO`, `DIA`, `ESTATUS`) VALUES
-(12, 'MARÍA GARCÍA', '554412334', 101, '2500', '10 DE ENERO', 'PAGADO'),
-(13, 'CARLOS RAMÍREZ', '554876543', 932, '3000', '5 DE FEBRERO', 'NO PAGADO'),
-(14, 'LAURA MARTÍNEZ', '555123456', 103, '2700', '15 DE MARZO', 'PAGADO'),
-(18, 'VALERIA TORRES', '559012345', 107, '2900', '8 DE JULIO', 'NO PAGADO'),
-(19, 'FERNANDO RIVAS', '550123456', 108, '2800', '30 DE AGOSTO', 'PAGADO'),
-(27, 'RODRI', '3922831', 512, '9999', '5 DE NOVIEMBRE', 'PAGADO'),
-(28, 'LESLI', '4902931', 110, '2000', '25 DE JULIO', 'PAGADO'),
-(33, 'JUAN', '3920230', 104, '3000', '3 DE MAYO', 'PAGADO');
+(13, 'CARLOS RAMÍREZ', '554876543', 120, '3000', '5 DE FEBRERO', 'NO PAGADO'),
+(37, 'EMILIO', '490392', 333, '4999', '4 DE JUNIO', 'PAGADO'),
+(40, 'ALDO', '49023932', 105, '4000', '4 DE JULIO', 'PAGADO'),
+(43, 'JUAN PABLO', '94283921', 512, '9999', '4 DE MAYO', 'NO PAGADO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `contrasena` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `correo`, `contrasena`) VALUES
+(1, 'adrian@gmail.com', '1d6442ddcfd9db1ff81df77cbefcd5afcc8c7ca952ab3101ede17a84b866d3f3'),
+(2, 'lol', 'a0e570324e6ffdbc6b9c813dec968d9bad134bc0dbb061530934f4e59c2700b9');
 
 --
 -- Índices para tablas volcadas
@@ -107,6 +117,12 @@ ALTER TABLE `clientes`
   ADD KEY `APARTAMENTO` (`APARTAMENTO`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -114,13 +130,19 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `apartamentos`
 --
 ALTER TABLE `apartamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

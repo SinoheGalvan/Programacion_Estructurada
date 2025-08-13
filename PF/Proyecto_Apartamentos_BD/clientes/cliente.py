@@ -9,7 +9,7 @@ def agregarRegistro():
         print(f"❌ Conexion con la base de datos fallida\nError {conexion1}")
         input("\n🔄 Ingrese enter para continuar")
         return 
-    cursor1.execute("select * from apartamentos where ocupado='NO'")
+    cursor1.execute("select * from apartamentos where ocupado='NO'") 
     registros = cursor1.fetchall()
     if registros == []:
         print("\n\t\t...🚫 No hay apartamentos disponibles...")
@@ -34,7 +34,6 @@ def agregarRegistro():
                             nuevo.append(apt)
                             cursor1.execute(f"update apartamentos set ocupado = 'SI' where apartamento = {apt}")
                             valido = False
-                        
             else:
                 nuevo.append(input(f"\t💾 Ingrese el {items[i]} de la persona: \n\t-> ").upper().strip())
         if cursor1 == None:
